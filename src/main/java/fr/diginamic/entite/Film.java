@@ -14,28 +14,63 @@ public class Film {
     @Column(name = "id", nullable = false)
     private Long id;
 
-    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    @JoinColumn(name = "pays_id")
-    private Pays pays;
-
     private String nom;
     private String url;
     private String idOmdb;
     private String langue;
     private String plot;
-    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    private String anneeSortie;
+
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "lieu_tournage_id")
     private LieuTournage lieuTournage;
-    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    @JoinTable(name = "film_realisateur", joinColumns = @JoinColumn(name = "film_id"), inverseJoinColumns = @JoinColumn(name = "realisateur_id"))
-    private Set<Realisateur> realisateurs;
-    private String anneeSortie;
+
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "pays_id")
+    private Pays pays;
+
+    @ManyToMany
+    @JoinTable(name = "film_realisateur",
+            joinColumns = @JoinColumn(name = "film_id", referencedColumnName = "id"),
+            inverseJoinColumns = @JoinColumn(name = "realisateur_id", referencedColumnName = "id"))
+    private Set<Realisateur> realisateurs = new HashSet<>();
+
     @ElementCollection(targetClass = String.class)
     @CollectionTable(name = "film_genre", joinColumns = @JoinColumn(name = "film_id"))
-    private List<String> genres;
-    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    @JoinTable(name = "film_acteur", joinColumns = @JoinColumn(name = "film_id"), inverseJoinColumns = @JoinColumn(name = "acteur_id"))
-    private Set<Acteur> acteurs;
+    private List<String> genres = new ArrayList<>();
+
+    @ManyToMany
+    @JoinTable(name = "film_acteur", joinColumns = @JoinColumn(name = "film_id", referencedColumnName = "id"), inverseJoinColumns = @JoinColumn(name = "acteur_id", referencedColumnName = "id"))
+    private Set<Acteur> acteurs = new HashSet<>();
+
+    @OneToMany(mappedBy = "film")
+    private Set<Role> roles = new HashSet<>();
+
+    @ManyToMany
+    @JoinTable(name = "casting_principal",
+            joinColumns = @JoinColumn(name = "film_id", referencedColumnName = "id"),
+            inverseJoinColumns = @JoinColumn(name = "acteur_id", referencedColumnName = "id"))
+    private Set<Acteur> castingPrincipal = new HashSet<>();
+
+    public Film(Long id, String nom, String url, String idOmdb, String langue, String plot, String anneeSortie, LieuTournage lieuTournage, Pays pays, Set<Realisateur> realisateurs, List<String> genres, Set<Acteur> acteurs, Set<Role> roles, Set<Acteur> castingPrincipal) {
+        this.id = id;
+        this.nom = nom;
+        this.url = url;
+        this.idOmdb = idOmdb;
+        this.langue = langue;
+        this.plot = plot;
+        this.anneeSortie = anneeSortie;
+        this.lieuTournage = lieuTournage;
+        this.pays = pays;
+        this.realisateurs = realisateurs;
+        this.genres = genres;
+        this.acteurs = acteurs;
+        this.roles = roles;
+        this.castingPrincipal = castingPrincipal;
+    }
+
+    public Film() {
+    }
 
     @JsonProperty("plot")
     public String getPlot() {
@@ -144,8 +179,47 @@ public class Film {
         this.acteurs = acteurs;
     }
 
+    public Set<Role> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(Set<Role> roles) {
+        this.roles = roles;
+    }
+
+    @JsonProperty("castingPrincipal")
+    public Set<Acteur> getCastingPrincipal() {
+        return castingPrincipal;
+    }
+
+    public void setCastingPrincipal(Set<Acteur> castingPrincipal) {
+        this.castingPrincipal = castingPrincipal;
+    }
+
     @Override
     public String toString() {
-        return "Film{" + "pays=" + pays + ", nom='" + nom + '\'' + ", url='" + url + '\'' + ", id='" + idOmdb + '\'' + ", langue='" + langue + '\'' + ", lieuTournage=" + lieuTournage + ", realisateurs=" + realisateurs + ", anneeSortie='" + anneeSortie + '\'' + ", genres=" + genres + ", acteurs=" + acteurs + '}';
+        return "Film{" +
+                " id = " + id +
+                ", id_imdb = '" + idOmdb + '\'' +
+                ", titre = '" + nom + '\'' +
+                ", année de sortie = '" + anneeSortie + '\'' +
+                ", pays d'origine = " + pays +
+                ", lieu de tournage = " + lieuTournage +
+                ", genres = " + genres +
+                ", description = '" + plot + '\'' +
+                ", langue = '" + pays + '\'' +
+                ", realisateurs = " + realisateurs +
+                ", acteurs = " + acteurs +
+                '}';
+    }
+
+    public void addCastingPrincipal(Acteur acteurCasting) {
+        this.castingPrincipal.add(acteurCasting);
+    }
+
+    public void addRealisateur(Realisateur realisateur) {this.realisateurs.add(realisateur);}
+
+    public void addActeurFilm(Acteur acteurFilm){
+        this.acteurs.add(acteurFilm);
     }
 }

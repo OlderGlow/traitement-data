@@ -19,10 +19,10 @@ public class Main {
                     sc.nextLine();
                     System.out.println("Quel acteur voulez-vous ?");
                     String nomActeur = sc.nextLine();
-                    try{
+                    try {
                         List<Film> films = filmManager.selectMovieByActor(nomActeur);
                         for (Film film : films) {
-                            System.out.println(film.toString());
+                            System.out.println(film.getNom() + " (" + film.getAnneeSortie() + ")");
                         }
                     } catch (BLLException e) {
                         System.out.println(e.getMessage());
@@ -32,10 +32,10 @@ public class Main {
                     sc.nextLine();
                     System.out.println("Quel film souhaitez-vous voir le casting ?");
                     String nomFilm = sc.nextLine();
-                    try{
+                    try {
                         List<Acteur> acteurs = acteurManager.selectCastingByMovie(nomFilm);
                         for (Acteur acteur : acteurs) {
-                            System.out.println(acteur.toString());
+                            System.out.println(acteur.getIdentite());
                         }
                     } catch (BLLException e) {
                         System.out.println(e.getMessage());
@@ -47,10 +47,10 @@ public class Main {
                     String year1 = sc.nextLine();
                     System.out.println("Quelle est la deuxième année ?");
                     String year2 = sc.nextLine();
-                    try{
+                    try {
                         List<Film> films = filmManager.selectMovieBetweenTwoYears(year1, year2);
                         for (Film film : films) {
-                            System.out.println(film.toString());
+                            System.out.println(film.getNom() + " (" + film.getAnneeSortie() + ")");
                         }
                     } catch (BLLException e) {
                         System.out.println(e.getMessage());
@@ -62,18 +62,31 @@ public class Main {
                     String nomActeur1 = sc.nextLine();
                     System.out.println("Nom du deuxième acteur : ");
                     String nomActeur2 = sc.nextLine();
-                    try{
+                    try {
                         List<Film> films = filmManager.selectMoviesCommonActors(nomActeur1, nomActeur2);
                         for (Film film : films) {
-                            System.out.println(film.toString());
+                            System.out.println(film.getNom() + " (" + film.getAnneeSortie() + ")");
                         }
                     } catch (BLLException e) {
                         System.out.println(e.getMessage());
                     }
                     break;
                 case 5:
-                    System.out.println("5 - Affichage des films sortis entre 2 années données et qui ont un acteur/actrice donné au\n" +
-                            "casting");
+                    try {
+                        sc.nextLine();
+                        System.out.println("Quelle est la première année ?");
+                        String date1 = sc.nextLine();
+                        System.out.println("Quelle est la deuxième année ?");
+                        String date2 = sc.nextLine();
+                        System.out.println("Quel est le nom de l'acteur ?");
+                        String acteur = sc.nextLine();
+                        List<Film> films = filmManager.selectMoviesBetweenDatesAndHavingActors(date1, date2, acteur);
+                        for (Film film : films) {
+                            System.out.println(film.getNom() + " (" + film.getAnneeSortie() + ")");
+                        }
+                    } catch (BLLException e) {
+                        System.out.println(e.getMessage());
+                    }
                     break;
                 case 6:
                     break;
@@ -81,7 +94,7 @@ public class Main {
         } while (choix != 99);
     }
 
-    public static void menu(){
+    public static void menu() {
         System.out.println("1 - Affichage de la filmographie d'un acteur");
         System.out.println("2 - Affichage du casting d’un film donné");
         System.out.println("3 - Affichage des films sortis entre 2 années données");

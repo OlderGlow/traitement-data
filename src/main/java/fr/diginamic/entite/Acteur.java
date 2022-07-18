@@ -15,14 +15,36 @@ public class Acteur {
     private Long id;
 
     private String identite;
+
     @Embedded
     private Naissance naissance;
+
     private String url;
     private String idOmdb;
 
-    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    @JoinTable(name = "acteur_role", joinColumns = @JoinColumn(name = "acteur_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
-    private Set<Role> roles;
+    @OneToMany(mappedBy = "acteur")
+    private Set<Role> roles = new HashSet<>();
+
+    @ManyToMany(mappedBy = "castingPrincipal")
+    private Set<Film> castingPrincipal = new HashSet<>();
+
+    @ManyToMany(mappedBy = "acteurs")
+    private Set<Film> films = new HashSet<>();
+
+
+    public Acteur(Long id, String identite, Naissance naissance, String url, String idOmdb, Set<Role> roles, Set<Film> castingPrincipal, Set<Film> films) {
+        this.id = id;
+        this.identite = identite;
+        this.naissance = naissance;
+        this.url = url;
+        this.idOmdb = idOmdb;
+        this.roles = roles;
+        this.castingPrincipal = castingPrincipal;
+        this.films = films;
+    }
+
+    public Acteur() {
+    }
 
     public Long getId() {
         return id;
@@ -77,6 +99,22 @@ public class Acteur {
         this.roles = roles;
     }
 
+    public Set<Film> getCastingPrincipal() {
+        return castingPrincipal;
+    }
+
+    public void setCastingPrincipal(Set<Film> castingPrincipal) {
+        this.castingPrincipal = castingPrincipal;
+    }
+
+    public Set<Film> getFilms() {
+        return films;
+    }
+
+    public void setFilms(Set<Film> films) {
+        this.films = films;
+    }
+
     @Override
     public String toString() {
         return "Acteur{" +
@@ -86,5 +124,13 @@ public class Acteur {
                 ", id='" + idOmdb + '\'' +
                 ", roles=" + roles +
                 '}';
+    }
+
+    public void addCastingPrincipal(Film film) {
+        this.castingPrincipal.add(film);
+    }
+
+    public void addFilm(Film film) {
+        this.films.add(film);
     }
 }

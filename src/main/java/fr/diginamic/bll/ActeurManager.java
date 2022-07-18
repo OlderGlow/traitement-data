@@ -40,14 +40,18 @@ public class ActeurManager {
         }
     }
 
-    public void create(Acteur acteur) throws BLLException {
+    public Acteur create(Acteur acteur) throws BLLException {
         try {
-            if(acteurDAO.selectByIdentite(acteur.getIdentite()) == null) {
+            Acteur acteurTrouve = acteurDAO.selectByIdImdb(acteur.getIdOmdb());
+            if(acteurTrouve == null) {
                 acteurDAO.create(acteur);
+            } else {
+                return acteurTrouve;
             }
         } catch (DalException e) {
             throw new BLLException("Erreur lors de l'insertion de l'acteur", e);
         }
+        return acteur;
     }
 
     public void update(Acteur acteur) throws BLLException {

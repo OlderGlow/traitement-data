@@ -16,8 +16,19 @@ public class Realisateur {
     private String identite;
     private String url;
 
+    @JsonProperty("realisateurs")
     @ManyToMany(mappedBy = "realisateurs")
-    private Set<Film> films;
+    private Set<Film> films = new LinkedHashSet<>();
+
+    public Realisateur(Long id, String identite, String url, Set<Film> films) {
+        this.id = id;
+        this.identite = identite;
+        this.url = url;
+        this.films = films;
+    }
+
+    public Realisateur() {
+    }
 
     public Long getId() {
         return id;
@@ -51,5 +62,9 @@ public class Realisateur {
 
     public void setUrl(String url) {
         this.url = url;
+    }
+
+    public void addFilm(Film film) {
+        this.films.add(film);
     }
 }

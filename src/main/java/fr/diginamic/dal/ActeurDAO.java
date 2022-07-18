@@ -62,11 +62,11 @@ public class ActeurDAO implements DAO<Acteur> {
         }
     }
 
-    public Acteur selectByIdentite(String identite) throws DalException {
+    public Acteur selectByIdImdb(String idImdb) throws DalException {
         try {
-            return em.createQuery("SELECT a FROM Acteur a WHERE a.identite = :identite", Acteur.class).setParameter("identite", identite).getSingleResult();
+            return em.createQuery("SELECT a FROM Acteur a WHERE a.idOmdb = :idImdb", Acteur.class).setParameter("idImdb", idImdb).getSingleResult();
         } catch (Exception e) {
-           return null;
+            return null;
         }
     }
 

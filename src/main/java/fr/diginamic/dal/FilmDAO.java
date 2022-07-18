@@ -61,9 +61,9 @@ public class FilmDAO implements DAO<Film> {
         }
     }
 
-    public Film selectByNom(String nom) throws DalException {
+    public Film selectByIdImdb(String idImdb) throws DalException {
         try {
-            return em.createQuery("SELECT f FROM Film f WHERE f.nom = :nom", Film.class).setParameter("nom", nom).getSingleResult();
+            return em.createQuery("SELECT f FROM Film f WHERE f.idOmdb = :idImdb", Film.class).setParameter("idImdb", idImdb).getSingleResult();
         } catch (Exception e) {
             return null;
         }
@@ -87,9 +87,17 @@ public class FilmDAO implements DAO<Film> {
 
     public List<Film> selectMoviesCommonActors(String acteur1, String acteur2) throws DalException {
         try {
-            return em.createQuery("SELECT f FROM Film f JOIN f.acteurs a WHERE a.identite = :acteur1 OR a.identite = :acteur2", Film.class).setParameter("acteur1", acteur1).setParameter("acteur2", acteur2).getResultList();
+            return em.createQuery("SELECT f FROM Film f JOIN f.acteurs a WHERE a.identite = :acteur1 AND f.id IN (SELECT f.id FROM Film f JOIN f.acteurs a WHERE a.identite = :acteur2)", Film.class).setParameter("acteur1", acteur1).setParameter("acteur2", acteur2).getResultList();
         } catch (Exception e) {
             throw new DalException("Erreur lors de la récupération des films des deux acteurs");
+        }
+    }
+
+    public List<Film> selectMoviesBetweenDatesAndHavingActors(String date1, String date2, String acteur) throws DalException {
+        try {
+            return em.createQuery("SELECT f FROM Film f JOIN f.acteurs a WHERE a.identite=:acteur AND f.id IN (SELECT f.id FROM Film f WHERE f.anneeSortie BETWEEN :date1 AND :date2)", Film.class).setParameter("acteur", acteur).setParameter("date1", date1).setParameter("date2", date2).getResultList();
+        } catch (Exception e) {
+            throw new DalException("Erreur lors de la récupération des films entre deux dates et ayant un acteur");
         }
     }
 }

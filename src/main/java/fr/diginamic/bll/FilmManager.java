@@ -41,14 +41,18 @@ public class FilmManager {
         }
     }
 
-    public void create(Film film) throws BLLException {
+    public Film create(Film film) throws BLLException {
         try {
-            if(filmDAO.selectByNom(film.getNom()) == null) {
+            Film filmTrouve = filmDAO.selectByIdImdb(film.getIdOmdb());
+            if(filmTrouve == null) {
                 filmDAO.create(film);
+            } else {
+                return filmTrouve;
             }
         } catch (DalException e) {
             throw new BLLException("Erreur lors de l'insertion du film", e);
         }
+        return film;
     }
 
     public void update(Film film) throws BLLException {
@@ -86,6 +90,14 @@ public class FilmManager {
     public List<Film> selectMoviesCommonActors(String acteur1, String acteur2) throws BLLException {
         try {
             return filmDAO.selectMoviesCommonActors(acteur1, acteur2);
+        } catch (DalException e) {
+            throw new BLLException("Erreur lors de la récupération du film", e);
+        }
+    }
+
+    public List<Film> selectMoviesBetweenDatesAndHavingActors(String date1, String date2, String acteur) throws BLLException {
+        try {
+            return filmDAO.selectMoviesBetweenDatesAndHavingActors(date1, date2, acteur);
         } catch (DalException e) {
             throw new BLLException("Erreur lors de la récupération du film", e);
         }
