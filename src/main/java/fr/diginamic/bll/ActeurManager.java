@@ -117,4 +117,19 @@ public class ActeurManager {
             throw new BLLException("Erreur lors de la récupération de l'acteur", e);
         }
     }
+
+    /**
+     * Méthode qui permet de récupérer les acteurs communs à deux films
+     * @param movie1 Film 1
+     * @param movie2 Film 2
+     * @return Liste des acteurs communs
+     * @throws BLLException Exception
+     */
+    public List<Acteur> selectActorsByTwoMovies(String movie1, String movie2) throws BLLException {
+        try {
+            return acteurDAO.selectActorsByTwoMovies(movie1, movie2);
+        } catch (DalException e) {
+            throw new BLLException("Erreur lors de la récupération de l'acteur", e);
+        }
+    }
 }

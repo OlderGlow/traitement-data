@@ -96,6 +96,20 @@ public class Main {
                     }
                     break;
                 case 6:
+                    sc.nextLine();
+                    System.out.println("Quel est le titre du premier film ?");
+                    String titre1 = sc.nextLine();
+                    System.out.println("Quel est le titre du deuxième film ?");
+                    String titre2 = sc.nextLine();
+                    try {
+                        List<Acteur> acteurs = acteurManager.selectActorsByTwoMovies(titre1, titre2);
+                        for (Acteur acteur : acteurs) {
+                            System.out.println(acteur.getIdentite());
+                        }
+                    } catch (BLLException e) {
+                        System.out.println(e.getMessage());
+                    }
+                case 7:
                     break;
             }
         } while (choix != 99);
@@ -110,7 +124,8 @@ public class Main {
         System.out.println("3 - Affichage des films sortis entre 2 années données");
         System.out.println("4 - Affichage des films communs à 2 acteurs/actrices donnés");
         System.out.println("5 - Affichage des films sortis entre 2 années données et qui ont un acteur/actrice donné au casting");
-        System.out.println("6 - Quitter");
+        System.out.println("6 - Affichage des acteurs communs à deux films donnés");
+        System.out.println("7 - Quitter");
         System.out.println("Votre choix :");
     }
 }

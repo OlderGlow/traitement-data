@@ -133,4 +133,19 @@ public class ActeurDAO implements DAO<Acteur> {
             throw new DalException("Erreur lors de la récupération des acteurs du film");
         }
     }
+
+    /**
+     * Méthode qui permet de récupérer tous les acteurs communs entre deux films
+     * @param movie1 film 1
+     * @param movie2 film 2
+     * @return liste des acteurs
+     * @throws DalException exception lors de la récupération des acteurs communs
+     */
+    public List<Acteur> selectActorsByTwoMovies(String movie1, String movie2) throws DalException {
+        try {
+            return em.createQuery("SELECT a FROM Acteur a JOIN a.roles c WHERE c.film.nom = :movie1 AND a.id IN (SELECT a2.id FROM Acteur a2 JOIN a2.roles c2 WHERE c2.film.nom = :movie2)", Acteur.class).setParameter("movie1", movie1).setParameter("movie2", movie2).getResultList();
+        } catch (Exception e) {
+            throw new DalException("Erreur lors de la récupération des acteurs du film");
+        }
+    }
 }

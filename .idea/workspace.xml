@@ -5,35 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="de9544c7-7f37-46e0-a0ac-5f079af8dd8c" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/fr/diginamic/JSONtoDb.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/diginamic/JSONtoDb.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/fr/diginamic/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/diginamic/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/fr/diginamic/bll/ActeurManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/diginamic/bll/ActeurManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/fr/diginamic/bll/BLLException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/diginamic/bll/BLLException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/fr/diginamic/bll/FilmManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/diginamic/bll/FilmManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/fr/diginamic/bll/LieuTournageManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/diginamic/bll/LieuTournageManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/fr/diginamic/bll/PaysManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/diginamic/bll/PaysManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/fr/diginamic/bll/PersistenceManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/diginamic/bll/PersistenceManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/fr/diginamic/bll/ReadFileManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/diginamic/bll/ReadFileManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/fr/diginamic/bll/RealisateurManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/diginamic/bll/RealisateurManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/fr/diginamic/bll/RoleManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/diginamic/bll/RoleManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/fr/diginamic/dal/ActeurDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/diginamic/dal/ActeurDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/fr/diginamic/dal/DAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/diginamic/dal/DAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/fr/diginamic/dal/DAOFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/diginamic/dal/DAOFactory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/fr/diginamic/dal/DalException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/diginamic/dal/DalException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/fr/diginamic/dal/FilmDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/diginamic/dal/FilmDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/fr/diginamic/dal/LieuTournageDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/diginamic/dal/LieuTournageDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/fr/diginamic/dal/PaysDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/diginamic/dal/PaysDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/fr/diginamic/dal/RealisateurDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/diginamic/dal/RealisateurDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/fr/diginamic/dal/RoleDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/diginamic/dal/RoleDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/fr/diginamic/entite/Acteur.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/diginamic/entite/Acteur.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/fr/diginamic/entite/Film.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/diginamic/entite/Film.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/fr/diginamic/entite/LieuTournage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/diginamic/entite/LieuTournage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/fr/diginamic/entite/Naissance.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/diginamic/entite/Naissance.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/fr/diginamic/entite/Pays.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/diginamic/entite/Pays.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/fr/diginamic/entite/Realisateur.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/diginamic/entite/Realisateur.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/fr/diginamic/entite/Role.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/diginamic/entite/Role.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -66,21 +41,21 @@
   <component name="ProjectViewState">
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "/Users/julienpicquet/IdeaProjects/traitement-data/src/main/java/fr/diginamic/dal",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "fileTemplates"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/julienpicquet/IdeaProjects/traitement-data/src/main/java/fr/diginamic/dal&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;fileTemplates&quot;
   },
-  "keyToStringList": {
-    "DatabaseDriversLRU": [
-      "mysql"
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;mysql&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/main/java/fr/diginamic/dal" />
@@ -146,7 +121,8 @@
       <workItem from="1657698188059" duration="1332000" />
       <workItem from="1658090527170" duration="737000" />
       <workItem from="1658092130527" duration="4236000" />
-      <workItem from="1658128940174" duration="19233000" />
+      <workItem from="1658128940174" duration="19513000" />
+      <workItem from="1658150099317" duration="1440000" />
     </task>
     <servers />
   </component>
