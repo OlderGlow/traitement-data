@@ -5,14 +5,28 @@ import fr.diginamic.entite.*;
 
 import java.util.*;
 
+/**
+ * Classe RoleManager qui permet de gérer les opérations sur les rôles
+ * @author Julien Picquet
+ * @version 1.0
+ * @see Role
+ * @see RoleManager
+ */
 public class RoleManager {
     public static volatile RoleManager instance;
     public static RoleDAO roleDAO;
 
+    /**
+     * Constructeur de la classe RoleManager
+     */
     private RoleManager() {
         roleDAO = DAOFactory.getRoleDAO();
     }
 
+    /**
+     * Méthode qui permet de récupérer l'instance de la classe RoleManager
+     * @return instance de la classe RoleManager
+     */
     public static RoleManager getInstance() {
         if (instance == null) {
             synchronized (RoleManager.class) {
@@ -25,6 +39,10 @@ public class RoleManager {
     }
 
 
+    /**
+     * Méthode qui permet de récupérer tous les rôles
+     * @return liste de rôles
+     */
     public List<Role> selectAll() throws BLLException {
         try {
             return roleDAO.selectAll();
@@ -33,6 +51,11 @@ public class RoleManager {
         }
     }
 
+    /**
+     * Méthode qui permet de récupérer un rôle par son id
+     * @param id id du rôle
+     * @return rôle
+     */
     public Role selectById(int id) throws BLLException {
         try {
             return roleDAO.selectById(id);
@@ -41,6 +64,10 @@ public class RoleManager {
         }
     }
 
+    /**
+     * Méthode qui permet de créer un role dans la base de données
+     * @param role role à créer
+     */
     public void create(Role role) throws BLLException {
         try {
             if(roleDAO.selectByName(role.getCharacterName()) == null) {
@@ -51,6 +78,10 @@ public class RoleManager {
         }
     }
 
+    /**
+     * Méthode qui permet de mettre à jour un role dans la base de données
+     * @param role role à mettre à jour
+     */
     public void update(Role role) throws BLLException {
         try {
             roleDAO.update(role);
@@ -59,6 +90,10 @@ public class RoleManager {
         }
     }
 
+    /**
+     * Méthode qui permet de supprimer un role dans la base de données
+     * @param role role à supprimer
+     */
     public void delete(Role role) throws BLLException {
         try {
             roleDAO.delete(role);

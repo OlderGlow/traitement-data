@@ -6,6 +6,13 @@ import fr.diginamic.entite.*;
 import java.io.*;
 import java.util.*;
 
+/**
+ * Classe permettant de convertir un fichier JSON en base de données.
+ * Cette classe déconstruit la liste récupérer par le reader et la convertit en base de données en faisant appeler les méthodes de la classe ActeurManager et de la classe FilmManager.
+ * @see ReadFileManager
+ * @author Julien Picquet
+ * @version 1.0
+ */
 public class JSONtoDb {
     public static void main(String[] args) {
         ActeurManager acteurManager = ActeurManager.getInstance();
@@ -25,19 +32,19 @@ public class JSONtoDb {
                     filmJson.setActeurs(new HashSet<>());
                     filmJson.setRealisateurs(new HashSet<>());
                     Film film = filmManager.create(filmJson);
-                    // traitement de la liaison entre acteur et film => castingPrincipals
+                    // traitement de la liaison entre acteur et film → castingPrincipals
                     for(Acteur acteurCastingJson : castingPrincipals){
                         Acteur acteurCasting = acteurManager.create(acteurCastingJson);
                         film.addCastingPrincipal(acteurCasting);
                         acteurCasting.addCastingPrincipal(film);
                     }
-                    // traitement de la liaison entre acteur et film => acteurs
+                    // traitement de la liaison entre acteur et film → acteurs
                     for(Acteur acteurFilmJson : acteurFilms){
                         Acteur acteurFilm = acteurManager.create(acteurFilmJson);
                         film.addActeurFilm(acteurFilm);
                         acteurFilm.addFilm(film);
                     }
-                    // traitement de la liaison entre film et realisateur
+                    // traitement de la liaison entre film et réalisateur
                     for(Realisateur realisateurJson : realisateurs){
                         Realisateur realisateurFilm = realisateurManager.create(realisateurJson);
                         film.addRealisateur(realisateurFilm);

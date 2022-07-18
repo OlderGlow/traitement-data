@@ -5,6 +5,13 @@ import fr.diginamic.entite.*;
 
 import java.util.*;
 
+/**
+ * Classe principale pour lancer le programme
+ * Cette classe permet de lancer un programme permettant d'effectuer des opérations de recherche sur une base de données.
+ * Un menu est affiché à l'utilisateur pour lui permettre de choisir l'opération à accomplir.
+ * @author Julien Picquet
+ * @version 1.0
+ */
 public class Main {
     public static void main(String[] args) {
         ActeurManager acteurManager = ActeurManager.getInstance();
@@ -94,6 +101,9 @@ public class Main {
         } while (choix != 99);
     }
 
+    /**
+     * Méthode permettant d'afficher le menu à l'utilisateur
+     */
     public static void menu() {
         System.out.println("1 - Affichage de la filmographie d'un acteur");
         System.out.println("2 - Affichage du casting d’un film donné");

@@ -5,14 +5,28 @@ import fr.diginamic.entite.*;
 
 import java.util.*;
 
+/**
+ * Classe ActeurManager qui gère les opérations sur les acteurs
+ * @author Julien Picquet
+ * @version 1.0
+ * @see Acteur
+ * @see ActeurManager
+ */
 public class ActeurManager {
     public static volatile ActeurManager instance;
     public static ActeurDAO acteurDAO;
 
+    /**
+     * Constructeur de la classe ActeurManager
+     */
     private ActeurManager() {
         acteurDAO = DAOFactory.getActeurDAO();
     }
 
+    /**
+     * Méthode qui retourne l'instance de la classe ActeurManager
+     * @return instance de la classe ActeurManager
+     */
     public static ActeurManager getInstance() {
         if (instance == null) {
             synchronized (ActeurManager.class) {
@@ -24,6 +38,10 @@ public class ActeurManager {
         return instance;
     }
 
+    /**
+     * Méthode qui retourne la liste des acteurs
+     * @return Liste des acteurs
+     */
     public List<Acteur> selectAll() throws BLLException {
         try {
             return acteurDAO.selectAll();
@@ -32,6 +50,11 @@ public class ActeurManager {
         }
     }
 
+    /**
+     * Méthode qui retourne un acteur à partir de son id
+     * @param id Identifiant de l'acteur
+     * @return Acteur
+     */
     public Acteur selectById(long id) throws BLLException {
         try {
             return acteurDAO.selectById(id);
@@ -40,6 +63,11 @@ public class ActeurManager {
         }
     }
 
+    /**
+     * Méthode qui permet d'ajouter un acteur
+     * @param acteur Acteur à ajouter
+     * @return Acteur ajouté
+     */
     public Acteur create(Acteur acteur) throws BLLException {
         try {
             Acteur acteurTrouve = acteurDAO.selectByIdImdb(acteur.getIdOmdb());
@@ -54,6 +82,10 @@ public class ActeurManager {
         return acteur;
     }
 
+    /**
+     * Méthode qui permet de mettre à jour un acteur
+     * @param acteur Acteur à mettre à jour
+     */
     public void update(Acteur acteur) throws BLLException {
         try {
             acteurDAO.update(acteur);
@@ -62,6 +94,10 @@ public class ActeurManager {
         }
     }
 
+    /**
+     * Méthode qui permet de supprimer un acteur
+     * @param acteur Acteur à supprimer
+     */
     public void delete(Acteur acteur) throws BLLException {
         try {
             acteurDAO.delete(acteur);
@@ -70,6 +106,10 @@ public class ActeurManager {
         }
     }
 
+    /**
+     * Méthode qui permet de rechercher la distribution d'un film à partir du nom de l'acteur
+     * @param nom Nom de l'acteur
+     */
     public List<Acteur> selectCastingByMovie(String nom) throws BLLException {
         try {
             return acteurDAO.selectCastingByMovie(nom);
