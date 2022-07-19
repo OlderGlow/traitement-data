@@ -6,9 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="de9544c7-7f37-46e0-a0ac-5f079af8dd8c" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/fr/diginamic/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/diginamic/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/fr/diginamic/bll/ActeurManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/diginamic/bll/ActeurManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/fr/diginamic/dal/ActeurDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/diginamic/dal/ActeurDAO.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -122,7 +119,9 @@
       <workItem from="1658090527170" duration="737000" />
       <workItem from="1658092130527" duration="4236000" />
       <workItem from="1658128940174" duration="19513000" />
-      <workItem from="1658150099317" duration="1440000" />
+      <workItem from="1658150099317" duration="2389000" />
+      <workItem from="1658155070043" duration="1248000" />
+      <workItem from="1658216011886" duration="1012000" />
     </task>
     <servers />
   </component>
